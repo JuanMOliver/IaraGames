@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login e Cadastro</title>
+    <link rel="stylesheet" href="../css/stylelogin.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="form-box" id="login-box">
+            <h2>Login</h2>
+            <form id="login-form">
+                <input type="email" id="emailLogin" placeholder="Email" required>
+                <div class="senha-container">
+                    <input type="password" id="senhaLogin" placeholder="Senha" required>
+                    <span class="toggle" onclick="toggleSenha()">👁</span>
+                </div>
+                <button type="submit">Entrar</button>
+                <p>Não tem conta? <a href="#" onclick="mostrarCadastro()">Cadastre-se</a></p>
+            </form>
+        </div>
+
+        <div class="form-box hidden" id="cadastro-box">
+            <h2>Cadastro</h2>
+            <form onsubmit="event.preventDefault(); fazerCadastro();">
+                <input type="email" id="cadastroEmail" placeholder="Email" required>
+                <div class="senha-container">
+                    <input type="password" id="cadastroSenha" placeholder="Senha" required>
+                    <span class="toggle" onclick="toggleSenha('cadastroSenha')">👁</span>
+                </div>
+                <button type="submit">Cadastrar</button>
+                <p>Já tem conta? <a href="#" onclick="mostrarLogin()">Entrar</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function mostrarCadastro() {
+            document.getElementById('login-box').classList.add('hidden');
+            document.getElementById('cadastro-box').classList.remove('hidden');
+        }
+
+        function mostrarLogin() {
+            document.getElementById('cadastro-box').classList.add('hidden');
+            document.getElementById('login-box').classList.remove('hidden');
+        }
+
+        function toggleSenha(id = 'senhaLogin') {
+            const input = document.getElementById(id);
+            if (input.type === "password") {
+                input.type = "text";
+            } else {
+                input.type = "password";
+            }
+        }
+
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById("emailLogin").value;
+            const senha = document.getElementById("senhaLogin").value;
+
+            const emailSalvo = localStorage.getItem("usuarioEmail");
+            const senhaSalva = localStorage.getItem("usuarioSenha");
+
+            if (email === emailSalvo && senha === senhaSalva) {
+                window.location.href = "/index.html";
+            } else {
+                alert("Email ou senha incorretos.");
+            }
+        });
+
+        function fazerCadastro() {
+            const email = document.getElementById("cadastroEmail").value;
+            const senha = document.getElementById("cadastroSenha").value;
+
+            localStorage.setItem("usuarioEmail", email);
+            localStorage.setItem("usuarioSenha", senha);
+
+            alert("Cadastro realizado com sucesso!");
+            mostrarLogin();
+        }
+    </script>
+</body>
+</html>

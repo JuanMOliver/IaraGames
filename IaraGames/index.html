@@ -1,81 +1,71 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iara Games - Lista de Jogos</title>
     <link rel="stylesheet" href="./assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <style>
-        .container-right {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            position: absolute;
-            right: 20px;
-            top: 100px;
-        }
-        .games-list {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-            
-        }
-        .game-card {
-            width: 300px;
-            border: 1px solid #313131;
-            border-radius: 8px;
-            padding: 15px;
-            text-align: center;
-            background-color: #13202e;
-            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-            color: white;
-        }
-        .game-card img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-        .gif-container {
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        .gif-container img {
-            width: 300px; /* Ajuste o tamanho conforme necessário */
-            border-radius: 10px; /* Bordas arredondadas */
-            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Sombra */
-        }
-
-        
-    </style>
     <header>
-        <h1>Iara Games</h1>
+        <div class="logo-container">
+            <h1>Iara Games</h1>
+        </div>
         <nav>
             <ul>
-                <li><a href="./index.html">Inicío</a></li>
+                <li><a href="./index.html">Início</a></li>
                 <li><a href="./assets/pages/jogos.html">Jogos</a></li>
-                <li><a href="./assets/pages/contato.html">Contato</a></li>
             </ul>
         </nav>
     </header>
-    <main>
-        <div class="gif-container">
-            <img src="./assets/images/sonic.gif" alt="GIF animado">
+    
+
+    <div class="topbar">
+        <div class="user-info" id="user-info">
+            <a href="./assets/pages/login.html" id="login-link">Login</a>
         </div>
-        <h2 > Bem-vindo </h2>
-        <p style="color: #fff;">Bem-vindo ao nosso portal dedicado aos jogos brasileiros! Nosso site tem como objetivo promover e destacar os melhores jogos desenvolvidos no Brasil, apresentando talentos nacionais e impulsionando a indústria de games do país.</p>
-    
+        <div class="acessibilidade">
+            <button onclick="alterarFonte('+')">A+</button>
+            <button onclick="alterarFonte('-')">A-</button>
+            <button onclick="toggleContraste()">🌙</button>
+        </div>
+    </div>
+
+    <main>
+        <h2>Bem-vindo</h2>
+        <p>Bem-vindo ao nosso portal dedicado aos jogos brasileiros! Nosso site tem como objetivo promover e destacar os melhores jogos desenvolvidos no Brasil, apresentando talentos nacionais e impulsionando a indústria de games do país.</p>
     </main>
-    
-    
+
     <footer>
         <p>&copy; 2025 Iara Games. Todos os direitos reservados.</p>
     </footer>
+
+    <script>
+        let fonteAtual = 100;
+
+        function alterarFonte(op) {
+            if (op === '+') {
+                fonteAtual += 10;
+            } else if (op === '-' && fonteAtual > 60) {
+                fonteAtual -= 10;
+            }
+            document.body.style.fontSize = fonteAtual + '%';
+        }
+
+        function toggleContraste() {
+            document.body.classList.toggle('contraste');
+        }
+
+        const email = localStorage.getItem("usuarioEmail");
+        if (email) {
+            document.getElementById("user-info").innerHTML = `Olá, <strong>${email}</strong> <button onclick="logout()" style="margin-left: 10px;">Sair</button>`;
+        }
+
+        function logout() {
+            localStorage.removeItem("usuarioEmail");
+            window.location.reload();
+        }
+    </script>
 </body>
 </html>
