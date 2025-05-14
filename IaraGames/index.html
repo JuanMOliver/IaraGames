@@ -10,7 +10,7 @@
 <body>
     <header>
         <div class="logo-container">
-            <h1>Iara Games</h1>
+            <h1><img src="./assets/images/iara-logo-sem-fundo.png"  width="90" height="70" alt=""></h1>
         </div>
         <nav>
             <ul>
@@ -28,18 +28,37 @@
         <div class="acessibilidade">
             <button onclick="alterarFonte('+')">A+</button>
             <button onclick="alterarFonte('-')">A-</button>
-            <button onclick="toggleContraste()">🌙</button>
+            
         </div>
     </div>
 
-    <main>
-        <h2>Bem-vindo</h2>
-        <p>Bem-vindo ao nosso portal dedicado aos jogos brasileiros! Nosso site tem como objetivo promover e destacar os melhores jogos desenvolvidos no Brasil, apresentando talentos nacionais e impulsionando a indústria de games do país.</p>
+   <main>
+        <h2>Destaque</h2>
+        <div class="jogos-destaque">
+            
+              <!-- Jogo 1 -->
+            <article class="jogo-item">
+                <img src="./assets/images/horizon-chase-2.jpg" alt="Horizon Chase 2">
+                <h3>Horizon Chase 2</h3>
+                <a href="#" class="btn">Sobre</a>
+            </article>
+            
+            <!-- Jogo 2 -->
+            <article class="jogo-item">
+                <img src="./assets/images/fobia-.jpg" alt="Fobia - St. Dinfna Hotel">
+                <!-- <h3>Fobia - St. Dinfna Hotel</h3> -->
+            </article>
+
+
+            <!-- Jogo 3 -->
+            <article class="jogo-item">
+                <img src="./assets/images/hazel-sky.jpg" alt="Hazel Sky">
+                <!-- <h3>Hazel Sky</h3> -->
+            </article>
+        </div>
     </main>
 
-    <footer>
-        <p>&copy; 2025 Iara Games. Todos os direitos reservados.</p>
-    </footer>
+   
 
     <script>
         let fonteAtual = 100;
