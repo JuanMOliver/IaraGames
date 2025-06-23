@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iara Games - Lista de Jogos</title>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <h1><img src="./assets/images/iara-logo-sem-fundo.png"  width="90" height="70" alt=""></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Início</a></li>
+                <li><a href="./assets/pages/jogos.html">Jogos</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+
+    <div class="topbar">
+        <div class="user-info" id="user-info">
+            <a href="./assets/pages/login.html" id="login-link">Login</a>
+        </div>
+        <div class="acessibilidade">
+            <button onclick="alterarFonte('+')">A+</button>
+            <button onclick="alterarFonte('-')">A-</button>
+            
+        </div>
+    </div>
+
+   <main>
+        <h2>Destaque</h2>
+        <div class="jogos-destaque">
+            
+              <!-- Jogo 1 -->
+            <article class="jogo-item">
+                <img src="./assets/images/horizon-chase-2.jpg" alt="Horizon Chase 2">
+                <h3>Horizon Chase 2</h3>
+                <a href="#" class="btn">Sobre</a>
+            </article>
+            
+            <!-- Jogo 2 -->
+            <article class="jogo-item">
+                <img src="./assets/images/fobia-.jpg" alt="Fobia - St. Dinfna Hotel">
+                <!-- <h3>Fobia - St. Dinfna Hotel</h3> -->
+            </article>
+
+
+            <!-- Jogo 3 -->
+            <article class="jogo-item">
+                <img src="./assets/images/hazel-sky.jpg" alt="Hazel Sky">
+                <!-- <h3>Hazel Sky</h3> -->
+            </article>
+        </div>
+    </main>
+
+   
+
+    <script>
+        let fonteAtual = 100;
+
+        function alterarFonte(op) {
+            if (op === '+') {
+                fonteAtual += 10;
+            } else if (op === '-' && fonteAtual > 60) {
+                fonteAtual -= 10;
+            }
+            document.body.style.fontSize = fonteAtual + '%';
+        }
+
+        function toggleContraste() {
+            document.body.classList.toggle('contraste');
+        }
+
+        const email = localStorage.getItem("usuarioEmail");
+        if (email) {
+            document.getElementById("user-info").innerHTML = `Olá, <strong>${email}</strong> <button onclick="logout()" style="margin-left: 10px;">Sair</button>`;
+        }
+
+        function logout() {
+            localStorage.removeItem("usuarioEmail");
+            window.location.reload();
+        }
+    </script>
+</body>
+</html>
