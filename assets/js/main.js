@@ -1,3 +1,10 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+
+ReactDOM.render(<App />, document.getElementById('root'));
+
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log('main.js carregado e DOMContentLoaded disparado.');
 
