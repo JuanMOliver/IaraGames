@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function LocationMap() {
+function Location() {
   const [location, setLocation] = useState(null);
 
   useEffect(() => {
@@ -25,4 +25,4 @@ function LocationMap() {
   );
 }
 
-export default LocationMap;
+export default Location;
